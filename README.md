@@ -100,3 +100,4 @@ Filtered Folder Collections: https://decapcms.org/docs/collection-types/#filtere
 
 Astro SEO: https://github.com/jonasmerlin/astro-seo
 
+Astro Docs: https://docs.astro.build/en/getting-started/
