@@ -85,10 +85,18 @@ Ook stoorde hij zich aan de laadtijden van WIX. opnieuw een probleem die ik al v
 
 ## Bronnenlijst:
 Imhotion: https://www.imhotion.com/porsche
+
 NetlifyCMS Widgets: https://v1.netlifycms.org/docs/widgets/#list
+
 DecapCMS: https://decapcms.org/
+
 CMS Custom Widget: https://www.netlify.com/blog/2017/06/20/extending-netlify-cms-part-one-custom-widgets/ 
+
 Custom Widget: https://decapcms.org/docs/custom-widgets/
+
 Custom Widget example: https://codesandbox.io/s/nifty-black-s8eih?fontsize=14&hidenavigation=1&theme=dark
+
 Filtered Folder Collections: https://decapcms.org/docs/collection-types/#filtered-folder-collections
+
 Astro SEO: https://github.com/jonasmerlin/astro-seo
+
