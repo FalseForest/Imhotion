@@ -1,20 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {getCollection} from "astro:content"
+import FeaturedProject from "../components/FeaturedProject.astro";
+
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects?.filter(p => p.data.featured)
 ---
 
 <Layout title="Home">
 	<main>
+		{
+			featuredProjects.map(project => <FeaturedProject project={project} />)
+		}
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-</style>
