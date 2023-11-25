@@ -1,0 +1,24 @@
+---
+import {getCollection} from "astro:content";
+const allCategories = await getCollection("categories");
+---
+<style>
+    div.category-tag {
+        display: inline-block;
+        background-color: #EDEDED;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        margin: 0 4px;
+    }
+</style>
+
+<div class="category-tag">
+    All
+</div>
+{
+    allCategories.map(category =>
+        <div class="category-tag">
+            {category.data.title}
+        </div>
+    )
+}
