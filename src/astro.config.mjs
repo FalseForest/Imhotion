@@ -5,9 +5,8 @@ export default defineConfig({
     integrations: [
         DecapCMS({
             config: {
-                media_folder: "public/images/uploads",
-                public_folder: "/images/uploads",
-                // publish_mode: editorial_workflow,
+                media_folder: "/src/content/assets",
+                public_folder: "../assets",
                 backend: {
                     name: 'git-gateway',
                     branch: 'main',
@@ -18,24 +17,19 @@ export default defineConfig({
                         name: 'projects',
                         label: 'Projects',
                         label_singular: 'Project',
-                        folder: 'src/pages/projects',
+                        folder: '/src/content/projects',
                         slug: '{{slug}}',
                         create: true,
                         delete: true,
                         fields: [
                             { name: 'title', widget: 'string', label: 'Project Name'},
-                            { name: 'hero-image', widget: 'image', label: 'Hero Image', required: false },
-                            { name: 'hero-video', widget: 'file', label: 'Hero Video', required: false },
-                            { name: 'short-description', widget: 'markdown', label: 'Project Description (Short Description)' },
-                            { name: 'bts-description', widget: 'markdown', label: 'Behind The Scenes Description' },
+                            { name: 'heroImage', widget: 'image', label: 'Hero Image', required: false },
+                            { name: 'heroVideo', widget: 'file', label: 'Hero Video', required: false },
+                            { name: 'shortDescription', widget: 'markdown', label: 'Project Description (Short Description)' },
+                            { name: 'btsDescription', widget: 'markdown', label: 'Behind The Scenes Description' },
                             { name: 'category', widget: 'relation', label: 'Select Category', collection: 'categories', search_fields: ['title'], value_field: 'title' },
-                            { name: 'featured', widget: 'select', label: 'Do you want to feature this project on the front page?', default: 'false',
-                                options: [
-                                    { label: 'Yes', value: 'true'},
-                                    { label: 'No', value: 'false'},
-                                ]
-                            },
-                            { name: 'actors', widget: 'relation', label: 'Actors', collection: 'profiles', search_fields: ['title'], value_field: 'title', multiple: true }
+                            { name: 'featured', widget: 'boolean', label: 'Do you want to feature this project on the front page?', default: false },
+                            { name: 'actors', widget: 'relation', label: 'Actors', collection: 'profiles', search_fields: ['name'], value_field: 'name', multiple: true }
                         ],
                     },
                     // Profiles Collection
@@ -43,31 +37,42 @@ export default defineConfig({
                         name: 'profiles',
                         label: 'Profiles',
                         label_singular: 'Profile',
-                        folder: 'src/pages/profiles',
+                        folder: 'src/content/profiles',
                         slug: '{{slug}}',
                         create: true,
                         delete: true,
+                        identifier_field: 'name',
                         fields: [
-                            { name: 'title', widget: 'string', label: 'Name'},
-                            { name: 'profile-image', widget: 'image', label: 'Profile Image' },
-                            { name: 'user-type', widget: 'select', label: 'User Type',
-                                options: [
-                                    { label: 'Actor', value: 'actor'},
-                                    { label: 'Music Artist', value: 'music-artist'}
-                                ]
-                            }
+                            { name: 'name', widget: 'string', label: 'Name'},
+                            { name: 'profileImage', widget: 'image', label: 'Profile Image'},
+                            { name: 'userType', widget: 'relation', label: 'Select User Type', collection: 'userTypes', search_fields: ['title'], value_field: 'title' },
+
                         ],
                     },
+                    // Categories Collection
                     {
                         name: 'categories',
                         label: 'Categories',
                         label_singular: 'Category',
-                        folder: 'src/pages/categories',
+                        folder: 'src/content/categories',
                         slug: '{{slug}}',
                         create: true,
                         delete: true,
                         fields: [
                             {name: 'title', widget: 'string', label: 'Category Name'}
+                        ]
+                    },
+                    // UserTypes Collection
+                    {
+                        name: 'userTypes',
+                        label: 'User types',
+                        label_singular: 'User Type',
+                        folder: 'src/content/userTypes',
+                        slug: '{{slug}}',
+                        create: true,
+                        delete: true,
+                        fields: [
+                            {name: 'title', widget: 'string', label: 'User Type'}
                         ]
                     }
                 ],
