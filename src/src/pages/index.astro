@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import {getCollection} from "astro:content"
 import FeaturedProject from "../components/FeaturedProject.astro";
+import CategoryCarousel from "../components/CategoryCarousel.astro";
 
 const allProjects = await getCollection("projects");
 const featuredProjects = allProjects?.filter(p => p.data.featured)
@@ -9,6 +10,7 @@ const featuredProjects = allProjects?.filter(p => p.data.featured)
 
 <Layout title="Home">
 	<main>
+		<CategoryCarousel />
 		{
 			featuredProjects.map(project => <FeaturedProject project={project} />)
 		}
