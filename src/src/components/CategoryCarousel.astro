@@ -7,17 +7,20 @@ const allCategories = await getCollection("categories");
         background-color: #EDEDED;
         padding: 0.5rem 1rem;
         border-radius: 8px;
-        margin: 0 4px;
         white-space: nowrap;
+        margin: 0 4px;
     }
 
     div.carousel {
         display: flex;
         flex-wrap: nowrap;
-        overflow: hidden;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
     }
+
 </style>
-<div class="carousel">
+<div class="carousel hide-scrollbar">
     <div class="category-tag">
         All
     </div>
