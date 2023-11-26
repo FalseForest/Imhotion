@@ -1,0 +1,35 @@
+---
+import {getCollection} from "astro:content";
+const allCategories = await getCollection("categories");
+---
+<style>
+    div.category-tag {
+        background-color: #EDEDED;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        white-space: nowrap;
+        margin: 0 4px;
+    }
+
+    div.carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+
+</style>
+<div class="carousel hide-scrollbar">
+    <div class="category-tag">
+        All
+    </div>
+    {
+        allCategories.map(category =>
+                <div class="category-tag">
+                    {category.data.title}
+                </div>
+        )
+    }
+</div>
+
