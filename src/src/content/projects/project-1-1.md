@@ -1,9 +1,9 @@
 ---
-title: "Project #2"
+title: Falling
 heroImage: ../assets/falling.png
 shortDescription: dasdsadasdaddas
 btsDescription: dasdasdsad
-category: 3D
+category: Music Video
 featured: true
 actors:
   - Maxim Dumont
