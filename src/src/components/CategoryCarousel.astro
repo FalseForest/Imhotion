@@ -4,21 +4,29 @@ const allCategories = await getCollection("categories");
 ---
 <style>
     div.category-tag {
-        display: inline-block;
         background-color: #EDEDED;
         padding: 0.5rem 1rem;
         border-radius: 8px;
         margin: 0 4px;
+        white-space: nowrap;
+    }
+
+    div.carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
     }
 </style>
-
-<div class="category-tag">
-    All
+<div class="carousel">
+    <div class="category-tag">
+        All
+    </div>
+    {
+        allCategories.map(category =>
+                <div class="category-tag">
+                    {category.data.title}
+                </div>
+        )
+    }
 </div>
-{
-    allCategories.map(category =>
-        <div class="category-tag">
-            {category.data.title}
-        </div>
-    )
-}
+
