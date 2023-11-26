@@ -32,4 +32,13 @@ const { title } = Astro.props;
 		height: 100vh;
 		background: linear-gradient(to bottom, white 20% , rgb(236, 228, 228) 40%, rgb(243, 243, 243) 100%);
 	}
+
+	.hide-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 </style>
