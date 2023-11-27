@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 export async function getStaticPaths() {
     const profiles = await getCollection("profiles");
 
-    return profiles.map(profile => {
+    return profiles?.map(profile => {
         return {
             params: { slug: profile.slug },
             props: { profile }
