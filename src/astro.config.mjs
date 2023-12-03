@@ -27,7 +27,8 @@ export default defineConfig({
                             { name: 'heroVideo', widget: 'file', label: 'Hero Video', required: false },
                             { name: 'shortDescription', widget: 'markdown', label: 'Project Description (Short Description)' },
                             { name: 'btsDescription', widget: 'markdown', label: 'Behind The Scenes Description' },
-                            { name: 'category', widget: 'relation', label: 'Select Category', collection: 'categories', search_fields: ['title'], value_field: 'title' },
+                            { name: 'primaryCategory', widget: 'relation', label: 'Select Primary Category', collection: 'categories', search_fields: ['title'], value_field: 'title' },
+                            { name: 'secondaryCategories', widget: 'relation', label: 'Secondary categories', collection: 'categories', search_fields: ['title'], value_field: 'title', multiple: true, required: false },
                             { name: 'featured', widget: 'boolean', label: 'Do you want to feature this project on the front page?', default: false },
                             { name: 'actors', widget: 'relation', label: 'Actors', collection: 'profiles', search_fields: ['name'], value_field: 'name', multiple: true }
                         ],
