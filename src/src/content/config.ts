@@ -4,12 +4,14 @@ const projectsCollection = defineCollection({
     schema: ({image}) =>
         z.object({
             title: z.string(),
-            heroImage: image(),
+            heroImage: image().optional(),
+            heroVideo: z.string().optional(),
             shortDescription: z.string(),
             btsDescription: z.string(),
-            category: z.string(),
+            primaryCategory: z.string(),
+            secondaryCategories: z.array(z.string()).optional(),
             featured: z.boolean().default(false),
-            actors: z.array(z.string())
+            actors: z.array(z.string()).optional()
         })
 })
 
@@ -17,7 +19,7 @@ const profilesCollection = defineCollection({
     schema: ({image}) =>
         z.object({
             title: z.string(),
-            image: image(),
+            image: image().optional(),
             userType: z.string()
         })
 })

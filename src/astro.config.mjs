@@ -30,7 +30,7 @@ export default defineConfig({
                             { name: 'primaryCategory', widget: 'relation', label: 'Select Primary Category', collection: 'categories', search_fields: ['title'], value_field: 'title' },
                             { name: 'secondaryCategories', widget: 'relation', label: 'Secondary categories', collection: 'categories', search_fields: ['title'], value_field: 'title', multiple: true, required: false },
                             { name: 'featured', widget: 'boolean', label: 'Do you want to feature this project on the front page?', default: false },
-                            { name: 'actors', widget: 'relation', label: 'Actors', collection: 'profiles', search_fields: ['name'], value_field: 'name', multiple: true }
+                            { name: 'actors', widget: 'relation', label: 'Actors', collection: 'profiles', search_fields: ['name'], value_field: 'name', multiple: true, required: false }
                         ],
                     },
                     // Profiles Collection
@@ -45,7 +45,7 @@ export default defineConfig({
                         identifier_field: 'name',
                         fields: [
                             { name: 'name', widget: 'string', label: 'Name'},
-                            { name: 'profileImage', widget: 'image', label: 'Profile Image'},
+                            { name: 'profileImage', widget: 'image', label: 'Profile Image', required: false},
                             { name: 'userType', widget: 'relation', label: 'Select User Type', collection: 'userTypes', search_fields: ['title'], value_field: 'title' },
 
                         ],
