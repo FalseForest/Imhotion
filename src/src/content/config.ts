@@ -19,7 +19,7 @@ const projectsCollection = defineCollection({
 const profilesCollection = defineCollection({
     schema: ({image}) =>
         z.object({
-            title: z.string(),
+            name: z.string(),
             image: image().optional(),
             userType: z.string()
         })
