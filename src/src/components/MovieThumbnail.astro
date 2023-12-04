@@ -25,7 +25,7 @@ const posterSize = 300;
     <a href={`/projects/${slug}`}>
         <Image
             src={image}
-            width={posterSize/1.33}
+            width={(posterSize/1.3).toFixed(2)}
             height={posterSize}
             alt="project thumbnail"
         ></Image>
