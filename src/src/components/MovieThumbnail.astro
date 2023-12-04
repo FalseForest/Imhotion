@@ -1,0 +1,14 @@
+---
+const { image, slug } = Astro.props;
+import { Image } from 'astro:assets';
+---
+<div>
+    <a href={`/projects/${slug}`}>
+        <Image
+            src={image}
+            width="100"
+            heigth="180"
+            alt="project thumbnail"
+        ></Image>
+    </a>
+</div>
