@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import {getCollection} from "astro:content"
 import MoviesCarousel from '../../components/MoviesCarousel.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../content/assets/Karting-Club-Tenerife-Horizontal.jpg'
 
 const allprojects = await getCollection('projects');
 const allPrimaryCategories = [];
@@ -15,10 +17,27 @@ allprojects.forEach(project => {
     * {
         color: white;
     }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
 </style>
 <Layout darkMode="true">
     <main>
-            { allPrimaryCategories.map(category => <MoviesCarousel categoryTitle={category} projects={allprojects.filter(p => p.data.primaryCategory === category)}/>) }
+        <!--<div class="hero-image">-->
+        <!--    <Image-->
+        <!--            src={heroImage}-->
+        <!--            height="700"-->
+        <!--            alt="hero image"-->
+        <!--    ></Image>-->
+        <!--</div>-->
+            {
+                allPrimaryCategories.map(category =>
+                    <MoviesCarousel
+                        categoryTitle={category}
+                        projects={allprojects.filter(p => p.data.primaryCategory === category)}/>)
+            }
     </main>
 </Layout>
 
