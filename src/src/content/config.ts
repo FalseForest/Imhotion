@@ -5,6 +5,7 @@ const projectsCollection = defineCollection({
         z.object({
             title: z.string(),
             heroImage: image().optional(),
+            verticalImage: image().optional(),
             heroVideo: z.string().optional(),
             shortDescription: z.string(),
             btsDescription: z.string(),

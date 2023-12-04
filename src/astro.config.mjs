@@ -24,6 +24,7 @@ export default defineConfig({
                         fields: [
                             { name: 'title', widget: 'string', label: 'Project Name'},
                             { name: 'heroImage', widget: 'image', label: 'Hero Image', required: false },
+                            { name: 'verticalImage', widget: 'image', label: 'Vertical Poster', required: false },
                             { name: 'heroVideo', widget: 'file', label: 'Hero Video', required: false },
                             { name: 'shortDescription', widget: 'markdown', label: 'Project Description (Short Description)' },
                             { name: 'btsDescription', widget: 'markdown', label: 'Behind The Scenes Description' },
