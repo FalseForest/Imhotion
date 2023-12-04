@@ -1,13 +1,32 @@
 ---
 const { image, slug } = Astro.props;
 import { Image } from 'astro:assets';
+
+const posterSize = 300;
 ---
-<div>
+<style define:vars={{posterSize: posterSize + 'px'}}>
+    div.poster {
+        margin: 0 5px;
+        height: var(--posterSize);
+        width: calc(var(--posterSize)/1.33);
+        transition: 300ms;
+    }
+
+    div.poster:hover {
+        scale: 0.98;
+        transition: 300ms;
+    }
+
+    img {
+        border-radius: 5px;
+    }
+</style>
+<div class="poster">
     <a href={`/projects/${slug}`}>
         <Image
             src={image}
-            width="100"
-            heigth="180"
+            width={posterSize/1.33}
+            height={posterSize}
             alt="project thumbnail"
         ></Image>
     </a>
