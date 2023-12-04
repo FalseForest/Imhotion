@@ -3,7 +3,23 @@ import H3 from "./H3.astro";
 import MovieThumbnail from './MovieThumbnail.astro';
 const { categoryTitle, projects } = Astro.props;
 ---
+<style>
+    div.movie-carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+</style>
+
 <H3>{categoryTitle}</H3>
-{
-    projects?.map(project => <MovieThumbnail image={project.data.heroImage} slug={project.slug} />)
-}
+<div class="movie-carousel hide-scrollbar">
+    {
+        projects?.map(project => <MovieThumbnail image={project.data.verticalImage ?? project.data.heroImage} slug={project.slug} />)
+    }
+</div>
