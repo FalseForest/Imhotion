@@ -5,5 +5,7 @@ verticalImage: ../assets/vertical-poster-ferrari.jpg
 shortDescription: dasdasdas
 btsDescription: asdsadsasd
 primaryCategory: 3D
+secondaryCategories:
+  - Movie
 featured: true
 ---
