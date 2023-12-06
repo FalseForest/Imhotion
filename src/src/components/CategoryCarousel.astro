@@ -1,6 +1,8 @@
 ---
 import {getCollection} from "astro:content";
 const allCategories = await getCollection("categories");
+// Only display Categories that have been marked to display in this carousel component
+const filteredCategories = allCategories.filter(category => !!category.data.displayOnHome);
 ---
 <style>
     div.category-tag {
@@ -25,7 +27,7 @@ const allCategories = await getCollection("categories");
         All
     </div>
     {
-        allCategories.map(category =>
+        filteredCategories.map(category =>
                 <div class="category-tag">
                     {category.data.title}
                 </div>
