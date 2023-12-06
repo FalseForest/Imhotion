@@ -61,7 +61,9 @@ export default defineConfig({
                         create: true,
                         delete: true,
                         fields: [
-                            {name: 'title', widget: 'string', label: 'Category Name'}
+                            {name: 'title', widget: 'string', label: 'Category Name'},
+                            {name: 'displayOnMovies', widget: 'boolean', label: 'Would you like to display this category as a collection on the Movies page?', default: false, required: false},
+                            {name: 'displayOnHome', widget: 'boolean', label: 'Would you like to display this category as a filter on the Home page', default: true, required: false}
                         ]
                     },
                     // UserTypes Collection
