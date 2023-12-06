@@ -1,0 +1,23 @@
+---
+import ProfileCard from "./ProfileCard.astro";
+import H3 from "./H3.astro";
+const { actors } = Astro.props;
+---
+<style>
+    div.movie-carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+</style>
+
+<H3>Actors</H3>
+{
+    actors.map(actor => <ProfileCard name={actor.data.name} profileImage={actor.data.image}/>)
+}
