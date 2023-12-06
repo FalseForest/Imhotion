@@ -4,14 +4,15 @@ import {getCollection} from "astro:content"
 import MoviesCarousel from '../../components/MoviesCarousel.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../../content/assets/Karting-Club-Tenerife-Horizontal.jpg'
+import ProfileCard from "../../components/ProfileCard.astro";
+import H3 from "../../components/H3.astro";
+import ActorsCarousel from "../../components/ActorsCarousel.astro";
 
 const allprojects = await getCollection('projects');
-const allPrimaryCategories = [];
-allprojects.forEach(project => {
-    if (!allPrimaryCategories.includes(project.data.primaryCategory)) {
-        allPrimaryCategories.push(project.data.primaryCategory);
-    }
-})
+const allCategories = await getCollection('categories');
+const allProfiles = await getCollection('profiles');
+const allActors = allProfiles.filter(profile => profile.data.userType === 'Actor');
+const filteredCategories = allCategories.filter(category => !!category.data.displayOnMovies);
 ---
 <style>
     * {
@@ -32,12 +33,18 @@ allprojects.forEach(project => {
         <!--            alt="hero image"-->
         <!--    ></Image>-->
         <!--</div>-->
-            {
-                allPrimaryCategories.map(category =>
-                    <MoviesCarousel
-                        categoryTitle={category}
-                        projects={allprojects.filter(p => p.data.primaryCategory === category)}/>)
-            }
+        <MoviesCarousel
+                categoryTitle={filteredCategories[0] .data.title}
+                projects={allprojects.filter(p => (p.data.primaryCategory === filteredCategories[0] .data.title) || p.data.secondaryCategories?.includes(filteredCategories[0] .data.title))}/>
+        <ActorsCarousel actors={allActors}/>
+        {
+            filteredCategories.slice(1, filteredCategories.length).map(category =>
+                <MoviesCarousel
+                    categoryTitle={category.data.title}
+                    projects={allprojects.filter(p => (p.data.primaryCategory === category.data.title) || p.data.secondaryCategories?.includes(category.data.title))}/>)
+        }
+
+
     </main>
 </Layout>
 
