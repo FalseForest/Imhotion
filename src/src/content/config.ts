@@ -26,7 +26,11 @@ const profilesCollection = defineCollection({
 })
 
 const categoriesCollection = defineCollection({
-    schema: () => z.object({title: z.string()})
+    schema: () => z.object({
+        title: z.string(),
+        displayOnMovies: z.boolean().default(false).optional(),
+        displayOnHome: z.boolean().default(true).optional()
+    })
 })
 
 const userTypesCollection = defineCollection({
