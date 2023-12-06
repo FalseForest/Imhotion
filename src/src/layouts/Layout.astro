@@ -46,4 +46,14 @@ const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #1
 	.hide-scrollbar::-webkit-scrollbar {
 		display: none;
 	}
+
+	div.carousel {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		scroll-snap-type: x mandatory;
+	}
+
 </style>
