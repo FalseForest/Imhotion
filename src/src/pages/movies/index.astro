@@ -1,12 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import {getCollection} from "astro:content"
-import MoviesCarousel from '../../components/MoviesCarousel.astro';
+import MoviesCarousel from '../../components/carousels/MoviesCarousel.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../../content/assets/Karting-Club-Tenerife-Horizontal.jpg'
-import ProfileCard from "../../components/ProfileCard.astro";
-import H3 from "../../components/H3.astro";
-import ActorsCarousel from "../../components/ActorsCarousel.astro";
+import ProfileCard from "../../components/cards/ProfileCard.astro";
+import H3 from "../../components/headings/H3.astro";
+import ActorsCarousel from "../../components/carousels/ActorsCarousel.astro";
 
 const allprojects = await getCollection('projects');
 const allCategories = await getCollection('categories');
