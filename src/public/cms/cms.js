@@ -1,4 +1,4 @@
-import CMS from 'astro-decap-cms';
+import CMS from 'decap-cms-app';
 import {
     BehindTheScenesWidgetControl,
     BehindTheScenesWidgetPreview
