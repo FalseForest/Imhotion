@@ -1,9 +1,17 @@
 import { defineConfig } from 'astro/config';
+import markdownIntegration from '@astropub/md'
 import DecapCMS from "astro-decap-cms";
 
 export default defineConfig({
     integrations: [
+        markdownIntegration(),
         DecapCMS({
+            previewStyles: [
+                '/src/style/previewStyle.scss',
+                'https://fonts.googleapis.com/css2?family=Poppins'
+            ],
+            adminPath: '/admin',
+            disableIdentityWidgetInjection: true,
             config: {
                 media_folder: "/src/content/assets",
                 public_folder: "../assets",
@@ -22,7 +30,7 @@ export default defineConfig({
                         create: true,
                         delete: true,
                         fields: [
-                            { name: 'title', widget: 'string', label: 'Project Name'},
+                            { name: 'title', widget: 'text', label: 'Project Name'},
                             { name: 'heroImage', widget: 'image', label: 'Hero Image', required: false },
                             { name: 'verticalImage', widget: 'image', label: 'Vertical Poster', required: false },
                             { name: 'heroVideo', widget: 'file', label: 'Hero Video', required: false },
@@ -83,4 +91,5 @@ export default defineConfig({
             },
         }),
     ],
+
 });
