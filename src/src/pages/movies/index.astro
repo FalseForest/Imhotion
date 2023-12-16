@@ -26,13 +26,13 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
 </style>
 <Layout darkMode="true">
     <main>
-        <!--<div class="hero-image">-->
-        <!--    <Image-->
-        <!--            src={heroImage}-->
-        <!--            height="700"-->
-        <!--            alt="hero image"-->
-        <!--    ></Image>-->
-        <!--</div>-->
+        <div class="hero-image">
+            <Image
+                    src={heroImage}
+                    height="700"
+                    alt="hero image"
+            ></Image>
+        </div>
         <MoviesCarousel
                 categoryTitle={filteredCategories[0] .data.title}
                 projects={allprojects.filter(p => (p.data.primaryCategory === filteredCategories[0] .data.title) || p.data.secondaryCategories?.includes(filteredCategories[0] .data.title))}/>
