@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-#site_url: https://imhotion.netlify.app/
-site_url: http://localhost:4321/
+site_url: https://imhotion.netlify.app/
+#site_url: http://localhost:4321/
 
 publish_mode: editorial_workflow
 media_folder: ../../content/assets
