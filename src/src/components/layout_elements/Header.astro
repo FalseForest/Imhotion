@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets'
+const { darkMode } = Astro.props;
+const iconColor = darkMode ? 'white' : '#818181'
+---
+<style define:vars={{iconColor: iconColor}}>
+    nav {
+        width: 100%;
+    }
+
+    ul {
+        margin: 20px auto;
+        padding: 0;
+        display: flex;
+        max-width: 100%;
+        width: 400px;
+        justify-content: space-around;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .icon {
+        background-color: var(--iconColor);
+        height: 30px;
+        width: 30px;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat
+    }
+
+    .home {
+        mask-image: url("../../content/assets/icons/house.svg");
+        -webkit-mask-image: url("../../content/assets/icons/house.svg");
+
+    }
+
+    .movies {
+        mask-image: url("../../content/assets/icons/film.svg");
+        -webkit-mask-image: url("../../content/assets/icons/film.svg");
+    }
+
+    .contact {
+        mask-image: url("../../content/assets/icons/phone.svg");
+        -webkit-mask-image: url("../../content/assets/icons/phone.svg");
+    }
+
+    .search {
+        mask-image: url("../../content/assets/icons/magnifying-glass.svg");
+        -webkit-mask-image: url("../../content/assets/icons/magnifying-glass.svg");
+    }
+</style>
+
+<nav>
+    <ul>
+        <li>
+            <a href="/">
+                <div class="icon home"></div>
+                <!--<Image src={houseIcon}-->
+                <!--       alt="Home Icon"-->
+                <!--       width={iconSize}-->
+                <!--       height={iconSize}-->
+                <!--&gt;-->
+                <!--</Image>-->
+            </a>
+        </li>
+        <li>
+            <a href="/movies">
+                <div class="icon movies"></div>
+            </a>
+        </li>
+        <li>
+            <a href="/contact">
+                <div class="icon contact"></div>
+            </a>
+        </li>
+        <li>
+            <a>
+                <div class="icon search"></div>
+            </a>
+        </li>
+    </ul>
+</nav>

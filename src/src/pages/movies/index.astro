@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {getCollection} from "astro:content"
+import MoviesCarousel from '../../components/carousels/MoviesCarousel.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../content/assets/Karting-Club-Tenerife-Horizontal.jpg'
+import ProfileCard from "../../components/cards/ProfileCard.astro";
+import H3 from "../../components/headings/H3.astro";
+import ActorsCarousel from "../../components/carousels/ActorsCarousel.astro";
+
+const allprojects = await getCollection('projects');
+const allCategories = await getCollection('categories');
+const allProfiles = await getCollection('profiles');
+const allActors = allProfiles.filter(profile => profile.data.userType === 'Actor');
+const filteredCategories = allCategories.filter(category => !!category.data.displayOnMovies);
+---
+<style>
+    * {
+        color: white;
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+<Layout darkMode="true">
+    <main>
+        <div class="hero-image">
+            <Image
+                    src={heroImage}
+                    height="700"
+                    alt="hero image"
+            ></Image>
+        </div>
+        <MoviesCarousel
+                categoryTitle={filteredCategories[0] .data.title}
+                projects={allprojects.filter(p => (p.data.primaryCategory === filteredCategories[0] .data.title) || p.data.secondaryCategories?.includes(filteredCategories[0] .data.title))}/>
+        <ActorsCarousel actors={allActors}/>
+        {
+            filteredCategories.slice(1, filteredCategories.length).map(category =>
+                <MoviesCarousel
+                    categoryTitle={category.data.title}
+                    projects={allprojects.filter(p => (p.data.primaryCategory === category.data.title) || p.data.secondaryCategories?.includes(category.data.title))}/>)
+        }
+
+
+    </main>
+</Layout>
+

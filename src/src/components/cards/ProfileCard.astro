@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import defaultProfileImage from '../../content/assets/default-profile-image.jpg'
+const { name, profileImage } = Astro.props;
+---
+<style>
+    img {
+        border-radius: 100%;
+    }
+    div.center {
+        text-align: center;
+        width: 150px;
+        margin: 0 20px;
+        display: inline-block;
+    }
+</style>
+<div class="center">
+    { profileImage ?
+        <Image
+                src={profileImage}
+                width="150"
+                height="150"
+                alt={"Profile image of " + name}
+        ></Image>
+        <p>{name}</p>
+        :
+        <Image
+                src={defaultProfileImage}
+                width="150"
+                height="150"
+                alt="default profile image"
+        ></Image>
+        <p>{name}</p>
+    }
+
+</div>

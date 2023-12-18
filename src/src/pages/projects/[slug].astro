@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import H1 from '../../components/headings/H1.astro';
+import H2 from '../../components/headings/H2.astro';
+
+import image from '../../content/assets/tiger.png'
+
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets';
+import { Markdown } from '@astropub/md';
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+
+    if (!!!projects) {
+        return [];
+    }
+
+
+    return projects.map(project => {
+        return {
+            params: { slug: project.slug },
+            props: { project }
+        }
+    });
+}
+
+function getYoutubeId(url): null | string{
+    if (!!!url?.trim()) {
+        return null;
+    }
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+}
+
+const { slug } = Astro.params;
+const { project } = Astro.props;
+const videoId = getYoutubeId(project.data?.heroVideo);
+---
+<style>
+    iframe {
+        width: 100%;
+        max-width: 800px;
+        max-height: 500px;
+        height: calc(100vw/1.75);
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
+
+<Layout>
+    <div class="container">
+        {
+            videoId ?
+                    <iframe src={'https://www.youtube.com/embed/' + videoId}
+                            title={project.data.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe> :
+                project.data.heroImage ?
+                        <Image
+                                src={project.data.heroImage}
+                                height="500"
+                                alt="hero image"
+                        ></Image> : ''
+        }
+        <H2 style="color: green">{project.data.primaryCategory}</H2>
+        <H1>{project.data.title}</H1>
+        <div>
+            <Markdown of={'[![Tiger floating in space](../assets/tiger.png)]'}></Markdown>
+        </div>
+    </div>
+</Layout>
