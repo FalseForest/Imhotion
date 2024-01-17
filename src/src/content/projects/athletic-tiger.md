@@ -1,6 +1,6 @@
 ---
 title: Athletic Tiger 2
-heroImage: ../assets/home-page-christmas-miracle.jpg
+heroImage: ../assets/home-page-athletic-tiger.jpg
 verticalImage: ../assets/vertical-poster-athletic-tiger.jpg
 shortDescription: This is athletic tiger
 btsDescription: >-

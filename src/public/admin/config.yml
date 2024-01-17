@@ -6,6 +6,7 @@ site_url: https://imhotion.netlify.app/
 
 publish_mode: editorial_workflow
 media_folder: /src/src/content/assets
+public folder: ../assets
 
 collections:
   - name: 'projects'
