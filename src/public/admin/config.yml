@@ -3,7 +3,6 @@ backend:
   branch: dev
 
 site_url: https://imhotion.netlify.app/
-#site_url: http://localhost:4321/
 
 publish_mode: editorial_workflow
 media_folder: ../../src/content/assets
