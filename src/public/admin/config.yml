@@ -5,7 +5,7 @@ backend:
 site_url: https://imhotion.netlify.app/
 
 publish_mode: editorial_workflow
-media_folder: ../../src/content/assets/
+media_folder: ../../src/content/assets
 
 collections:
   - name: 'projects'
