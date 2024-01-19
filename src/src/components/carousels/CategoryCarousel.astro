@@ -29,7 +29,7 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
     </div>
     {
         filteredCategories.map(category =>
-                <div class="category-tag" data-tag-name={'t'+category.data.title.replace(' ', '')+'t'}>
+                <div class="category-tag unselectable" data-tag-name={'t'+category.data.title.replace(' ', '')+'t'}>
                     {category.data.title}
                 </div>
         )
