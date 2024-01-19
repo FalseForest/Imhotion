@@ -9,13 +9,10 @@ btsDescription: >-
   the video was made entirely in Blender.
 
 
-  \## Behind The Scenes
+  ## Behind The Scenes
 
 
   Exgoland is the first ever Dubai based Metaverse project in the **MENA region**, built on **Solana**.
-
-
-   
 
 
   For aspiring entrepreneurs, Exgoland will provide entrepreneurs and users with a **universe** of opportunities to build, own and operate businesses.
