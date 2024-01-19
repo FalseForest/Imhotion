@@ -69,7 +69,7 @@ const videoId = getYoutubeId(project.data?.heroVideo);
         <H2 style="color: green">{project.data.primaryCategory}</H2>
         <H1>{project.data.title}</H1>
         <div>
-            <Markdown of={'[![Tiger floating in space](../assets/tiger.png)]'}></Markdown>
+            <Markdown of={project.data.btsDescription}></Markdown>
         </div>
     </div>
 </Layout>
