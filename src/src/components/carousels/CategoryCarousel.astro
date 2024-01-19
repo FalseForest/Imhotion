@@ -4,22 +4,32 @@ const allCategories = await getCollection("categories");
 // Only display Categories that have been marked to display in this carousel component
 const filteredCategories = allCategories.filter(category => !!category.data.displayOnHome);
 ---
-<style>
+<style type="text/scss">
     div.category-tag {
         background-color: #EDEDED;
         padding: 0.5rem 1rem;
         border-radius: 8px;
         white-space: nowrap;
         margin: 0 4px;
+      &.active {
+        background-color: aqua;
+      }
     }
+
+
 </style>
+
+<style id="global" is:global>
+
+</style>
+
 <div class="carousel hide-scrollbar">
-    <div class="category-tag">
+    <div class="category-tag active" data-tag-name="tallt">
         All
     </div>
     {
         filteredCategories.map(category =>
-                <div class="category-tag">
+                <div class="category-tag" data-tag-name={'t'+category.data.title.replace(' ', '')+'t'}>
                     {category.data.title}
                 </div>
         )

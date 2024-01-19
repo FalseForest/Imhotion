@@ -20,8 +20,8 @@ const cardSize = 350;
 
     article {
         width: var(--cardSize);
-        margin: 20px auto;
         color: white;
+        margin: 20px;
     }
 
     img {
@@ -66,25 +66,27 @@ const cardSize = 350;
     }
 
 </style>
-<article>
-    <a href={`/projects/${project.slug}`}>
-        <Image
-            src={project.data.heroImage}
-            alt={project.data.title}
-            width={cardSize}
-            height={(cardSize/1.42).toFixed(2)}
-        ></Image>
-    </a>
-    <footer>
-        <div class="body">
-            <H4>{ project.data.title }</H4>
-            <H5>{ project.data.primaryCategory }</H5>
-        </div>
-        <Image
+<a href={`/projects/${project.slug}`}>
+    <article>
+            <Image
                 src={project.data.heroImage}
                 alt={project.data.title}
                 width={cardSize}
-                height={cardSize/project.data.heroImage.width/project.data.heroImage.height}
-        ></Image>
-    </footer>
-</article>
+                height={(cardSize/1.42).toFixed(2)}
+            ></Image>
+        <footer>
+            <div class="body">
+                <H4>{ project.data.title }</H4>
+                <H5>{ project.data.primaryCategory }</H5>
+            </div>
+            <Image
+                    src={project.data.heroImage}
+                    alt={project.data.title}
+                    width={cardSize}
+                    height={cardSize/project.data.heroImage.width/project.data.heroImage.height}
+            ></Image>
+        </footer>
+    </article>
+</a>
+
+

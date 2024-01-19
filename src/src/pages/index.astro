@@ -5,15 +5,73 @@ import FeaturedProject from "../components/cards/FeaturedProject.astro";
 import CategoryCarousel from "../components/carousels/CategoryCarousel.astro";
 
 const allProjects = await getCollection("projects");
-const featuredProjects = allProjects?.filter(p => p.data.featured)
----
+const allCategories = await getCollection("categories");
 
+const featuredProjects = allProjects?.filter(p => p.data.featured);
+const filteredCategories = allCategories.filter(category => !!category.data.displayOnHome);
+
+---
+<style type="text/scss">
+	.content {
+		display: none;
+		&.show {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+</style>
 <Layout title="Home">
 	<main>
-		<CategoryCarousel />
-		{
-			featuredProjects.map(project => <FeaturedProject project={project} />)
-		}
+		<div class="flex center" >
+			<CategoryCarousel/>
+		</div>
+		<div class="container flex wrap space-around">
+			<div class="content tallt show">
+				{
+					featuredProjects.map(project => <FeaturedProject project={project} />)
+				}
+			</div>
+
+		</div>
+
+		<div class="container flex wrap space-around">
+			{
+				filteredCategories.map(category =>
+				{
+					return <div class={'t'+category.data.title.replace(' ', '')+'t' + ' content'}> {featuredProjects
+						.filter(project => project.data.primaryCategory === category.data.title)
+						.map(project => <FeaturedProject project={project}/>)} </div>
+				})
+			}
+		</div>
+
 	</main>
 </Layout>
+<script>
+	const categoryTags = document.querySelectorAll('.category-tag');
+
+
+	categoryTags.forEach((tag) => tag.addEventListener('click', () => {
+		updateTagStyle(tag, categoryTags);
+		displayContent(tag.getAttribute('data-tag-name'));
+	}));
+
+
+	function updateTagStyle(tag, tags) {
+		tags.forEach((tag) => {
+			tag.classList.remove('active')
+		});
+		tag.classList.add('active');
+	}
+
+	function displayContent(classToDisplay) {
+		const contentDivs = document.querySelectorAll('.content');
+		const querySelector = '.content.' + classToDisplay;
+		const showContentDiv = document.querySelector(querySelector);
+		contentDivs.forEach((content) => {
+			content.classList.remove('show');
+		});
+		showContentDiv.classList.add('show');
+	}
+</script>
 
