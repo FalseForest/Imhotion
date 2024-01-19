@@ -8,7 +8,7 @@ btsDescription: >-
   the video was made entirely in Blender
 
 
-  ![Tiger floating in space](../assets/tiger.png "Athletic tiger")
+  ![Tiger floating in space](../assets/default-profile-image.jpg "Athletic tiger")
 primaryCategory: 3D
 secondaryCategories:
   - Commercial
