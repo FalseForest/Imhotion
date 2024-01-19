@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { title, darkMode = false } = Astro.props;
-const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #121212 40%, #090909 100%)' : 'linear-gradient(to bottom, white 20% , rgb(236, 228, 228) 40%, rgb(243, 243, 243) 100%)';
+const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #121212 40%, #090909 100%)' : 'linear-gradient(to bottom, white 40% , rgb(236, 228, 228) 90%, rgb(243, 243, 243) 100%)';
 
 ---
 <!doctype html>
@@ -86,5 +86,16 @@ const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #1
 		&.center {
 			justify-content: center;
 		}
+	}
+
+	p {
+		margin: 2rem 0;
+		line-height: normal;
+		font-size: 26px;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
 	}
 </style>
