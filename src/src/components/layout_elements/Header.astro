@@ -31,7 +31,8 @@ const allUsers = await getCollection('profiles');
         height: 30px;
         width: 30px;
         -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat
+        mask-repeat: no-repeat;
+        color: rgba(0,0,0,0);
     }
 
     .home {
@@ -109,17 +110,17 @@ const allUsers = await getCollection('profiles');
     <ul class="header">
         <li>
             <a href="/">
-                <div class="icon home"></div>
+                <div class="icon home">Home</div>
             </a>
         </li>
         <li>
             <a href="/movies">
-                <div class="icon movies"></div>
+                <div class="icon movies">Movies</div>
             </a>
         </li>
         <li>
             <a href="/contact">
-                <div class="icon contact"></div>
+                <div class="icon contact">Contact</div>
             </a>
         </li>
         <li>
