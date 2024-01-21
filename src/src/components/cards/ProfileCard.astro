@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import defaultProfileImage from '../../content/assets/default-profile-image.jpg'
-const { name, profileImage } = Astro.props;
+const { name, profileImage, slug } = Astro.props;
 ---
 <style>
     img {
@@ -15,22 +15,23 @@ const { name, profileImage } = Astro.props;
     }
 </style>
 <div class="center">
-    { profileImage ?
-        <Image
-                src={profileImage}
-                width="150"
-                height="150"
-                alt={"Profile image of " + name}
-        ></Image>
-        <p>{name}</p>
-        :
-        <Image
-                src={defaultProfileImage}
-                width="150"
-                height="150"
-                alt="default profile image"
-        ></Image>
-        <p>{name}</p>
-    }
-
+    <a href={`/profiles/${slug}`}>
+        { profileImage ?
+                <Image
+                        src={profileImage}
+                        width="150"
+                        height="150"
+                        alt={"Profile image of " + name}
+                ></Image>
+                <p>{name}</p>
+            :
+                <Image
+                        src={defaultProfileImage}
+                        width="150"
+                        height="150"
+                        alt="default profile image"
+                ></Image>
+                <p>{name}</p>
+        }
+    </a>
 </div>

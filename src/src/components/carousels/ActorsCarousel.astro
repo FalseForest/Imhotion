@@ -13,7 +13,7 @@ const { actors } = Astro.props;
 <H3>Actors</H3>
 <div class="carousel hide-scrollbar">
     {
-        actors.map(actor => <ProfileCard name={actor.data.name} profileImage={actor.data.profileImage}/>)
+        actors.map(actor => <ProfileCard name={actor.data.name} profileImage={actor.data.profileImage} slug={actor.slug}/>)
     }
 </div>
 
