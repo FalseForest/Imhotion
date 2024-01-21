@@ -12,6 +12,7 @@
   "dependencies": {
     "@astropub/md": "^0.3.0",
     "astro": "^3.2.0",
+    "astro-seo": "^0.8.0",
     "react": "^17.0.2"
   }
 }
