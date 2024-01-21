@@ -8,6 +8,7 @@ import image from '../../content/assets/tiger.png'
 import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets';
 import { Markdown } from '@astropub/md';
+import ActorsCarousel from "../../components/carousels/ActorsCarousel.astro";
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
 
@@ -36,6 +37,8 @@ function getYoutubeId(url): null | string{
 const { slug } = Astro.params;
 const { project } = Astro.props;
 const videoId = getYoutubeId(project.data?.heroVideo);
+const allProfiles = await getCollection('profiles');
+const projectActors = allProfiles.filter(profile => project.data.actors?.includes(profile.data.name));
 ---
 <style>
     iframe {
@@ -71,5 +74,9 @@ const videoId = getYoutubeId(project.data?.heroVideo);
         <div>
             <Markdown of={project.data.btsDescription}></Markdown>
         </div>
+        {
+            project.data.actors?.length > 0 &&
+            <ActorsCarousel actors={projectActors} />
+        }
     </div>
 </Layout>
