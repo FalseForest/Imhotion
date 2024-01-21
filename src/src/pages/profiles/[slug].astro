@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content'
+import H1 from "../../components/headings/H1.astro";
+import Layout from "../../layouts/Layout.astro";
+import {Image} from "astro:assets";
+import H3 from "../../components/headings/H3.astro";
+import MoviesCarousel from "../../components/carousels/MoviesCarousel.astro";
+
 export async function getStaticPaths() {
     const profiles = await getCollection("profiles");
-
     if (!!!profiles) {
         return [];
     }
@@ -14,9 +19,51 @@ export async function getStaticPaths() {
         }
     });
 }
+const allProjects = await getCollection("projects");
 
 const { slug } = Astro.params;
 const { profile } = Astro.props;
----
 
-<h1>{profile.data.title}</h1>
+const allUserProjects = allProjects.filter(project => project.data.actors?.includes(profile.data.name));
+---
+<style type="text/scss">
+    div.text-center {
+      text-align: center;
+    }
+
+    div.profile-image-container {
+      border-radius: 100%;
+      overflow: hidden;
+      width: 200px;
+      height: 200px;
+      margin: 1rem;
+    }
+
+    div.projects {
+      margin-top: 1rem;
+    }
+</style>
+<Layout>
+    <div class="container">
+        <div class="text-center">
+            <H1>{profile.data.name}</H1>
+        </div>
+        <div class="flex center">
+            <div class="profile-image-container">
+                <Image class="profile-image"
+                       src={profile.data.profileImage}
+                       alt={profile.data.name}
+                       width=200
+                       height=200
+                ></Image>
+            </div>
+        </div>
+        <div class="text-center">
+            <H3>{profile.data.userType}</H3>
+        </div>
+        {
+            allUserProjects.length > 0 &&
+            <MoviesCarousel projects={allUserProjects} categoryTitle="Projects"></MoviesCarousel>
+        }
+    </div>
+</Layout>
