@@ -1,14 +1,19 @@
 ---
 import { Image } from 'astro:assets'
 const { darkMode } = Astro.props;
+import {getCollection} from "astro:content"
 const iconColor = darkMode ? 'white' : '#818181'
+
+const allProjects = await getCollection('projects');
+const allUsers = await getCollection('profiles');
+
 ---
-<style define:vars={{iconColor: iconColor}}>
+<style define:vars={{iconColor: iconColor}} type="text/scss">
     nav {
         width: 100%;
     }
 
-    ul {
+    ul.header {
         margin: 20px auto;
         padding: 0;
         display: flex;
@@ -49,19 +54,62 @@ const iconColor = darkMode ? 'white' : '#818181'
         mask-image: url("../../content/assets/icons/magnifying-glass.svg");
         -webkit-mask-image: url("../../content/assets/icons/magnifying-glass.svg");
     }
+
+    .search-overlay {
+        background-color: rgba(241, 237, 237, 0.38);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .search-bar {
+        position: absolute;
+        left: 50%;
+        top: 60px;
+        transform: translateX(-50%);
+
+        background-color: white;
+        width: 400px;
+        height: 30px;
+        padding: 1rem;
+
+        cursor: pointer;
+
+        border: black solid 1px;
+        border-radius: 30px;
+    }
+
+
+    li.result-item {
+      background-color: aqua;
+    }
+
+    ul.result-list {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        transform: translateX(-50%);
+        width: 400px;
+        background-color: white;
+        min-height: 350px;
+        max-height: 400px;
+        overflow-y: scroll;
+        z-index: 99;
+        border-radius: 32px;
+    }
+
+    .hide {
+        display: none;
+    }
 </style>
 
 <nav>
-    <ul>
+    <ul class="header">
         <li>
             <a href="/">
                 <div class="icon home"></div>
-                <!--<Image src={houseIcon}-->
-                <!--       alt="Home Icon"-->
-                <!--       width={iconSize}-->
-                <!--       height={iconSize}-->
-                <!--&gt;-->
-                <!--</Image>-->
             </a>
         </li>
         <li>
@@ -80,4 +128,90 @@ const iconColor = darkMode ? 'white' : '#818181'
             </a>
         </li>
     </ul>
+
+    <div class="search-overlay hide"></div>
+    <label>
+        <input placeholder="Search" class="search-bar hide" />
+    </label>
+
+    <ul class="result-list hide">
+        <li class="result-item">testing</li>
+    </ul>
 </nav>
+
+<script define:vars={{allProjects, allUsers}}>
+    let searchBar = document.querySelector('.search-bar');
+    let overlay = document.querySelector('.search-overlay');
+    let resultList = document.querySelector('ul.result-list');
+    document.querySelector('div.icon.search').addEventListener('click', () => {
+        overlay.classList.remove('hide');
+        searchBar.classList.remove('hide');
+        resultList.classList.remove('hide');
+        getDocumentsBySearch(searchBar.value);
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.classList.add('hide');
+        searchBar.classList.add('hide');
+        resultList.classList.add('hide');
+    });
+
+    searchBar.addEventListener('input', (inputEvent) => {
+        getDocumentsBySearch(searchBar.value);
+    });
+
+    function getDocumentsBySearch(searchValue) {
+        const upperSearchValue = searchValue.toUpperCase();
+        const filteredUsers = allUsers.filter(user => user.data.name.toUpperCase().includes(upperSearchValue))
+        const filterProjects = allProjects.filter(project => project.data.title.toUpperCase().includes(upperSearchValue)
+            || project.data.primaryCategory.toUpperCase().includes(upperSearchValue));
+
+        createResults(filteredUsers, filterProjects);
+    }
+
+    function createResults(users, projects) {
+        const ul = document.querySelector('ul.result-list');
+        ul.innerHTML = '';
+        if (users.length === 0 && projects.length === 0) {
+            ul.innerHTML = '<li>No results found<li/>'
+            return;
+        }
+
+        if (projects.length > 0) {
+            ul.innerHTML = '<H4>Projects</H4>';
+        }
+
+        projects.forEach(project => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `/projects/${project.slug}`
+            a.textContent = project.data.title;
+            li.append(a);
+            addStylingToLI(li);
+            ul.append(li);
+        })
+
+        if (users.length > 0) {
+            const h4 = document.createElement('H4');
+            h4.textContent = 'Users';
+            ul.append(h4);
+        }
+
+        users.forEach(user => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `/profiles/${user.slug}`
+            a.textContent = user.data.name;
+            li.append(a);
+
+            addStylingToLI(li);
+            ul.append(li);
+        })
+    }
+
+    function addStylingToLI(li) {
+        li.style.listStyle = 'none';
+        li.style.padding = '10px'
+        return li;
+    }
+</script>
