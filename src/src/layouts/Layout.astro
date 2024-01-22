@@ -1,6 +1,5 @@
 ---
 import Header from "../components/layout_elements/Header.astro";
-import { ViewTransitions } from 'astro:transitions';
 import { SEO } from "astro-seo";
 interface Props {
 	title: string;
@@ -35,7 +34,6 @@ const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #1
 		<link rel="stylesheet"
 			  href="https://fonts.googleapis.com/css2?family=Poppins">
 		<title>{title}</title>
-		<!--<ViewTransitions/>-->
 	</head>
 	<style is:global define:vars={{gradient: backgroundGradient}} type="text/scss">
 		* {
