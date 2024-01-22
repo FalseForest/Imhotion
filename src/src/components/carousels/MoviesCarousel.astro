@@ -7,11 +7,19 @@ const { categoryTitle, projects } = Astro.props;
     div.carousel {
         margin-top: 1rem;
         margin-bottom: 2rem;
+
     }
+
+    .scrollbar {
+        overflow-x: scroll;
+        scrollbar-color: rgba(28, 98, 129, 0.9) rgba(0 ,0 ,0 , 0.2);
+        scrollbar-width: thin;
+    }
+
 </style>
 
 <H3>{categoryTitle}</H3>
-<div class="carousel">
+<div class="carousel scrollbar">
     {
         projects?.map(project => <MovieThumbnail image={project.data.verticalImage ?? project.data.heroImage} slug={project.slug} />)
     }
