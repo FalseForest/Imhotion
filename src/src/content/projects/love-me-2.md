@@ -22,9 +22,12 @@ btsDescription: >-
   This music video was my first major music video filmed in Tenerife and I personally fell in love with the cinematic look of this island
 
 
-
-
   ## Behind The Scenes
+
+
+
+
+  The Canary Islands was a location that Sam had traveled to several times, this made Tenerife the perfect place to shoot this. There were several spots that he had in mind, but the scene by the cliffs and the small beach were the most important ones.
 primaryCategory: Music Video
 featured: false
 actors:
