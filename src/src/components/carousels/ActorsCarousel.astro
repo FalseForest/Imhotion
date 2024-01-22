@@ -10,7 +10,7 @@ const { actors } = Astro.props;
     }
 </style>
 
-<H3>Actors</H3>
+<H3>Cast & Crew</H3>
 <div class="carousel hide-scrollbar">
     {
         actors.map(actor => <ProfileCard name={actor.data.name} profileImage={actor.data.profileImage} slug={actor.slug}/>)
