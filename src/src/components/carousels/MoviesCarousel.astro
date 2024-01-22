@@ -11,7 +11,7 @@ const { categoryTitle, projects } = Astro.props;
 </style>
 
 <H3>{categoryTitle}</H3>
-<div class="carousel hide-scrollbar">
+<div class="carousel">
     {
         projects?.map(project => <MovieThumbnail image={project.data.verticalImage ?? project.data.heroImage} slug={project.slug} />)
     }
