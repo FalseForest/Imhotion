@@ -1,7 +1,8 @@
 ---
 title: Exgoland
 heroImage: ../assets/home-page-exgoland.jpg
-verticalImage: ../assets/vertical-poster-exgoland.jpg
+verticalImage: ../assets/b3b6fe_a44cf28b3f1b49a297d4d29c1e1da602~mv2.webp
+heroVideo: https://youtu.be/LQ-6KV4KAz8
 shortDescription: This 3D animation is the **official trailer** for the
   **metaverse** Exgoland, the video was made entirely in Blender.
 btsDescription: >-
@@ -28,5 +29,6 @@ btsDescription: >-
 primaryCategory: 3D
 secondaryCategories:
   - Commercial
+  - Top 10
 featured: true
 ---
