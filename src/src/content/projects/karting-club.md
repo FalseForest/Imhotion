@@ -1,7 +1,7 @@
 ---
 title: Karting Club
-heroImage: https://static.wixstatic.com/media/b3b6fe_3e1e2726726e40958a5ed0d553dab87d~mv2.jpg/v1/fill/w_520,h_338,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/karting%20wide%202.jpg
-verticalImage: https://static.wixstatic.com/media/b3b6fe_42c7540a343547bb847473c2de56e7fe~mv2.jpg/v1/fit/w_480,h_640,q_90/b3b6fe_42c7540a343547bb847473c2de56e7fe~mv2.webp
+heroImage: ../assets/Karting-Club-Tenerife-Horizontal.jpg
+verticalImage: ../assets/b3b6fe_42c7540a343547bb847473c2de56e7fe~mv2.webp
 heroVideo: https://youtu.be/MNF6RCCZggs
 shortDescription: "**The Karting video project**, created in 2023, served as a
   platform for me to showcase my exceptional 3D skills and invest ample time in
