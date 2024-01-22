@@ -1,7 +1,8 @@
 ---
 title: Athletic Tiger 2
-heroImage: ../assets/2023-12-30_18.28.27.png
+heroImage: ../assets/home-page-athletic-tiger.jpg
 verticalImage: ../assets/vertical-poster-athletic-tiger.jpg
+heroVideo: https://youtu.be/z0qlGR1VH3M
 shortDescription: This is athletic tiger
 btsDescription: >-
   This 3D animation is the official trailer for the Athletic Tiger metaverse,
