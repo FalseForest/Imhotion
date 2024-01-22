@@ -138,7 +138,7 @@ const allUsers = await getCollection('profiles');
     </ul>
 </nav>
 
-<script define:vars={{allProjects, allUsers}}>
+<script defer define:vars={{allProjects, allUsers}}>
     let searchBar = document.querySelector('.search-bar');
     let overlay = document.querySelector('.search-overlay');
     let resultList = document.querySelector('ul.result-list');

@@ -37,82 +37,83 @@ const backgroundGradient = darkMode ? 'linear-gradient(to bottom, black 20% , #1
 		<title>{title}</title>
 		<!--<ViewTransitions/>-->
 	</head>
+	<style is:global define:vars={{gradient: backgroundGradient}} type="text/scss">
+		* {
+			font-family: 'Poppins', Bahnschrift, -apple-system, serif;
+			box-sizing: border-box;
+		}
+
+		body {
+			height: 100%;
+			min-height: 100vh;
+			background: var(--gradient);
+		}
+
+		.hide-scrollbar {
+			-ms-overflow-style: none; /* IE and Edge */
+			scrollbar-width: none; /* Firefox */
+		}
+
+		.hide-scrollbar::-webkit-scrollbar {
+			display: none;
+		}
+
+		.unselectable {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		div.carousel {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+			scroll-snap-type: x mandatory;
+		}
+
+		div.container {
+			max-width: 800px;
+			margin: auto;
+		}
+
+		.flex {
+			display: flex;
+			&.wrap {
+				flex-wrap: wrap;
+			}
+
+			&.space-around {
+				justify-content: space-around;
+			}
+
+			&.space-between {
+				justify-content: space-between;
+			}
+
+			&.center {
+				justify-content: center;
+			}
+		}
+
+		p {
+			margin: 2rem 0;
+			line-height: normal;
+			font-size: 26px;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+	</style>
+
 	<body>
 	<Header darkMode={darkMode}/>
 	<slot />
 	</body>
 </html>
-<style is:global define:vars={{gradient: backgroundGradient}} type="text/scss">
-	* {
-		font-family: 'Poppins', Bahnschrift, -apple-system, serif;
-		box-sizing: border-box;
-	}
-
-	body {
-		height: 100%;
-		min-height: 100vh;
-		background: var(--gradient);
-	}
-
-	.hide-scrollbar {
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
-	}
-
-	.hide-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-
-	.unselectable {
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
-
-	div.carousel {
-		display: flex;
-		flex-wrap: nowrap;
-		overflow-x: scroll;
-		overflow-y: hidden;
-		-webkit-overflow-scrolling: touch;
-		scroll-snap-type: x mandatory;
-	}
-
-	div.container {
-		max-width: 800px;
-		margin: auto;
-	}
-
-	.flex {
-		display: flex;
-		&.wrap {
-			flex-wrap: wrap;
-		}
-
-		&.space-around {
-			justify-content: space-around;
-		}
-
-		&.space-between {
-			justify-content: space-between;
-		}
-
-		&.center {
-			justify-content: center;
-		}
-	}
-
-	p {
-		margin: 2rem 0;
-		line-height: normal;
-		font-size: 26px;
-	}
-
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
-
-</style>
