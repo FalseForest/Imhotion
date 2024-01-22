@@ -11,7 +11,6 @@ import ActorsCarousel from "../../components/carousels/ActorsCarousel.astro";
 const allprojects = await getCollection('projects');
 const allCategories = await getCollection('categories');
 const allProfiles = await getCollection('profiles');
-const allActors = allProfiles.filter(profile => profile.data.userType === 'Actor');
 const filteredCategories = allCategories.filter(category => !!category.data.displayOnMovies);
 ---
 <style>
@@ -36,7 +35,7 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
         <MoviesCarousel
                 categoryTitle={filteredCategories[0] .data.title}
                 projects={allprojects.filter(p => (p.data.primaryCategory === filteredCategories[0] .data.title) || p.data.secondaryCategories?.includes(filteredCategories[0] .data.title))}/>
-        <ActorsCarousel actors={allActors}/>
+        <ActorsCarousel actors={allProfiles}/>
         {
             filteredCategories.slice(1, filteredCategories.length).map(category =>
                 <MoviesCarousel
