@@ -1,5 +1,7 @@
 ---
 title: Love Me 2
+verticalImage: ../assets/b3b6fe_f18f4bd9d6d64d2d808747f688a46e4c~mv2.webp
+heroVideo: https://youtu.be/evf2LI3ZAfo
 shortDescription: >-
   After working on the song Love me 2 for two years, Sam Kerger (Skaerex)
   released his debut song featuring Sweety.
