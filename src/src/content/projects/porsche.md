@@ -40,4 +40,5 @@ secondaryCategories:
 featured: false
 actors:
   - Imhotep Vandeputte
+  - Cedric Vandeputte
 ---
