@@ -17,7 +17,16 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
 		&.show {
 			display: flex;
 			flex-wrap: wrap;
+			@media screen and (max-width: 800px) {
+				justify-content: center;
+			}
 		}
+	}
+
+	.projects {
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
 	}
 </style>
 <Layout title="Home">
@@ -25,7 +34,7 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
 		<div class="flex center" >
 			<CategoryCarousel/>
 		</div>
-		<div class="container flex wrap space-around">
+		<div class="container projects">
 			<div class="content tallt show">
 				{
 					featuredProjects.map(project => <FeaturedProject project={project} />)
@@ -34,7 +43,7 @@ const filteredCategories = allCategories.filter(category => !!category.data.disp
 
 		</div>
 
-		<div class="container flex wrap space-around">
+		<div class="container projects">
 			{
 				filteredCategories.map(category =>
 				{
